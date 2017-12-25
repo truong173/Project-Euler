@@ -6,12 +6,11 @@
 import math
 
 num = 600851475143
-
 hell = range(-int(math.sqrt(num)), -1)
 
 for i in hell:
-  if num % abs(i) == 0:
-    if all(abs(i) % j for j in range(2, abs(i))):
-      print(abs(i))
-      break
+    if num % abs(i) == 0:
+        if all(abs(i) % j for j in range(2, abs(i))):
+            print(abs(i))
+            break
 
