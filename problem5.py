@@ -6,6 +6,8 @@
 
 #This feels like a shitty solution, because I'm not certain about my algorithm yet, but I'm gonn keep tinkering with it for a while
 
+#WRONG SOLUTION! STILL WORKING ON THE PROBLEM.
+
 import math
 
 #input number
