@@ -6,44 +6,41 @@
 
 #This feels like a shitty solution, because I'm not certain about my algorithm yet, but I'm gonn keep tinkering with it for a while
 
-#WRONG SOLUTION! STILL WORKING ON THE PROBLEM.
-
-import math
+#UNFINISHED SOLUTION! STILL WORKING ON THE PROBLEM.
 
 #input number
-max_num = int(input())
+max_num = 10
 
 #define a function to get the product of all value of an input list
 def product(input_list):
     p = 1
-    for i in input_list:
-        p *= i
+    for il in input_list:
+        p *= il
     return p
 
-#simplify the solution by using the lcm from 1 to 10 already provided in the problem
-num = 2520
-placeholder = 1
-
 #get the true list from 11 to 21
-true_list = range(11, max_num + 1)
+true_list = range(2, max_num + 1)
 
 #separate the primes from the true list
 primes = [x for x in true_list if all(x % y != 0 for y in range(2, x))]
-
-#get the product of all primes and the lcm from 1 to 10
-products = product(primes) * num
-
+primes_origin = [x for x in true_list if all(x % y != 0 for y in range(2, x))]
+print("primes: ", primes, product(primes))
 #separate the non-prime numbers from the true list
-rest = [i for i in true_list if i not in primes]
+rest = [z for z in true_list if z not in primes]
+print("rest: ", rest)
 
-#separate the non-prime numbers that is not a factor of num
-others = [o for o in rest if num % o != 0]
-
-for n in others:
-	while placeholder < math.sqrt(n):
-		if products % placeholder == 0:
-			placeholder = placeholder + 1
-		print(placeholder)
+divs = []
+divs2 = []
+for r in rest:
+	if product(primes) % r != 0:
+		divs = divs + [div for div in primes if r % div == 0 and div not in divs]
+print(divs)
+for d in divs:
+	for r in rest:
+		for power in range(1, 7):
+			if ( product(primes) * (d ** power) ) % r == 0:
+				print(power)
+				break
+			else:
+				pass
 			
-result = products * placeholder
-print(products)
