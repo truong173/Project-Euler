@@ -10,6 +10,8 @@
 
 def lcm(max_num):
     
+    """loop from the bottom up, so large input numbers won't work"""
+    
     #define a function to get the product of all value of an input list
     def product(input_list):
         p = 1
@@ -39,14 +41,13 @@ def lcm(max_num):
             for power in range(1, 10):
                 if ( product(primes) * multi ) % np2 == 0:
                     break
+                elif np2 < d ** power:
+                    for reverse in range(1, power):
+                        multi = int(multi / (d ** reverse))
+                    break
                 else:
-                    if np2 < d ** power:
-                        for reverse in range(1, power):
-                            multi = int(multi / (d ** reverse))
-                        break
-                    else:
-                        multi = multi * (d ** power)
-                        pass
+                    multi = multi * (d ** power)
+                    pass
 
     result = product(primes) * multi
     return result
